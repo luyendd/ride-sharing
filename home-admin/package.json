@@ -10,7 +10,6 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@notum-cz/strapi-plugin-content-versioning": "^0.4.7",
     "@strapi/plugin-i18n": "4.9.1",
     "@strapi/plugin-sentry": "^4.9.1",
     "@strapi/plugin-seo": "^1.8.0",

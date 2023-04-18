@@ -1,6 +1,7 @@
 import { tw } from 'twind';
 import { useState } from 'react';
 import Quote from '@/constants/svg/quote.svg';
+import Image from 'next/image';
 
 const socialProofs = [
   {
@@ -50,51 +51,21 @@ const SocialProof = () => {
                 <div className={tw(`flex items-center justify-between`)}>
                   <div className={tw(`flex items-center pb-12`)}>
                     <div className={tw(`h-12 w-12`)}>
-                      <img
-                        src={socialProofs[currentIndex].image}
-                        alt={socialProofs[currentIndex].name}
-                        className={tw(`h-full w-full object-cover overflow-hidden rounded-full`)}
-                        height={48}
-                        width={48}
-                      />
+                      <Image src={socialProofs[currentIndex].image} alt={socialProofs[currentIndex].name} className={tw(`h-full w-full object-cover overflow-hidden rounded-full`)} height={48} width={48} />
                     </div>
                     <p className={tw(`text-gray-600 font-bold ml-3`)}>
                       {socialProofs[currentIndex].name} <br />
-                      <span className={tw(`text-gray-600 text-base font-light`)}>
-                        {socialProofs[currentIndex].company}
-                      </span>
+                      <span className={tw(`text-gray-600 text-base font-light`)}>{socialProofs[currentIndex].company}</span>
                     </p>
                   </div>
                   <div className={tw(`cursor-pointer flex pb-12`)}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width={44}
-                      height={44}
-                      viewBox="0 0 24 24"
-                      strokeWidth="1.5"
-                      stroke="#CBD5E0"
-                      fill="none"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      onClick={previous}
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" />
-                      <polyline points="15 6 9 12 15 18" />
+                    <svg xmlns='http://www.w3.org/2000/svg' width={44} height={44} viewBox='0 0 24 24' strokeWidth='1.5' stroke='#CBD5E0' fill='none' strokeLinecap='round' strokeLinejoin='round' onClick={previous}>
+                      <path stroke='none' d='M0 0h24v24H0z' />
+                      <polyline points='15 6 9 12 15 18' />
                     </svg>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width={44}
-                      height={44}
-                      viewBox="0 0 24 24"
-                      strokeWidth="1.5"
-                      stroke="#CBD5E0"
-                      fill="none"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      onClick={next}
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" />
-                      <polyline points="9 6 15 12 9 18" />
+                    <svg xmlns='http://www.w3.org/2000/svg' width={44} height={44} viewBox='0 0 24 24' strokeWidth='1.5' stroke='#CBD5E0' fill='none' strokeLinecap='round' strokeLinejoin='round' onClick={next}>
+                      <path stroke='none' d='M0 0h24v24H0z' />
+                      <polyline points='9 6 15 12 9 18' />
                     </svg>
                   </div>
                 </div>
