@@ -6,27 +6,14 @@ services:
     container_name: home-admin
     restart: unless-stopped
     environment:
-      NODE_ENV: development
-      HOST: 0.0.0.0
-      PORT: 1337
-      APP_KEYS: dUXC4VT2ob9qjpXjIL4VRw==,OQ65tdC3YvurcvhyTRoB5A==,qmwIBRH/PvWM5bbTzWHrTg==,56jH+pVtCYc9k3m4DW4QAQ==
-      API_TOKEN_SALT: tj3tyBrHiH+e4kSrBp1HsQ==
-      ADMIN_JWT_SECRET: MbZCAkH7L8uDoqCZjp6nlw==
-      TRANSFER_TOKEN_SALT: TwUWCZisN7tpPlD+e6Ebdg==
-      DATABASE_CLIENT: mysql2
-      DATABASE_ROOT_PASSWORD: password
-      DATABASE_NAME: mydatabase
-      DATABASE_USERNAME: user
-      DATABASE_PASSWORD: password
       DATABASE_HOST: admin-db
-      DATABASE_PORT: 3306
-    # volumes:
-    #   - ./config:/opt/app/config
-    #   - ./src:/opt/app/src
-    #   - ./package.json:/opt/package.json
-    #   - ./yarn.lock:/opt/yarn.lock
-    #   - ./.env:/opt/app/.env
-    #   - ./public/uploads:/opt/app/public/uploads
+    volumes:
+      - ./home-admin/config:/opt/app/config
+      - ./home-admin/src:/opt/app/src
+      - ./home-admin/package.json:/opt/package.json
+      - ./home-admin/yarn.lock:/opt/yarn.lock
+      - ./home-admin/.env:/opt/app/.env
+      - ./home-admin/public/uploads:/opt/app/public/uploads
     ports:
       - 1337:1337
     depends_on:
@@ -38,35 +25,26 @@ services:
     container_name: admin-db
     restart: unless-stopped
     platform: linux/amd64
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: mydatabase
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
     ports:
       - 3306:3306
     volumes:
       - admin-data:/var/lib/mysql
     networks:
       - dev
-  # home:
-  #   container_name: home
-  #   build:
-  #     context: home
-  #     target: development
-  #   environment:
-  #     NODE_ENV: development
-  #   # working_dir: /app
-  #   volumes:
-  #     - .:/app
-  #   command: node server.js
-  #   # command: ls -a
-  #   ports:
-  #     - '3030:3030'
-  #   depends_on:
-  #     - home-admin
-  #   networks:
-  #     - dev
+  home:
+    container_name: home
+    restart: unless-stopped
+    build:
+      context: ./home
+    volumes:
+      - ./home-app/src:/app/src
+      - ./home-app/public:/app/public
+    ports:
+      - '3030:3030'
+    depends_on:
+      - home-admin
+    networks:
+      - dev
 
 networks:
   dev:
