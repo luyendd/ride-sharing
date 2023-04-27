@@ -52,11 +52,13 @@ services:
     restart: unless-stopped
     build:
       context: ./home
+    command: yarn dev
     env_file: .env
     environment:
       NODE_ENV: ${NODE_ENV}
+      PORT: 3030
     volumes:
-      - ./home/src:/app/src
+      - ./home:/app
       - ./home/public:/app/public
     ports:
       - '3030:3030'
