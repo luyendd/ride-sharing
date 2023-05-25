@@ -1,0 +1,25 @@
+{
+  "name": "home-admin",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "packages/home-admin/src",
+  "targets": {
+    "serve": {
+      "executor": "@nx-extend/strapi:serve",
+      "options": {}
+    },
+    "build": {
+      "executor": "@nx-extend/strapi:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/home-admin"
+      },
+      "configurations": {
+        "production": {
+          "production": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
