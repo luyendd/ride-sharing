@@ -1,8 +1,8 @@
 {
-  "name": "strapi-123",
+  "name": "home-admin",
   "private": true,
   "version": "0.1.0",
-  "description": "A Strapi application",
+  "description": "Home Admin Application",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
@@ -11,10 +11,21 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@strapi/strapi": "4.8.2",
-    "@strapi/plugin-users-permissions": "4.8.2",
+    "@_sh/strapi-plugin-ckeditor": "^2.0.4",
+    "@notum-cz/strapi-plugin-content-versioning": "^0.4.7",
+    "@strapi/plugin-color-picker": "^4.10.6",
     "@strapi/plugin-i18n": "4.8.2",
-    "better-sqlite3": "8.0.1"
+    "@strapi/plugin-sentry": "^4.10.6",
+    "@strapi/plugin-seo": "^1.8.0",
+    "@strapi/plugin-users-permissions": "4.8.2",
+    "@strapi/strapi": "4.8.2",
+    "mysql": "^2.18.1",
+    "strapi-google-auth": "^0.1.2",
+    "strapi-plugin-cloudflare-pages": "^0.4.1",
+    "strapi-plugin-comments": "^2.2.10",
+    "strapi-plugin-duplicate-button": "^1.1.9",
+    "strapi-plugin-responsive-image": "^1.0.1",
+    "strapi-plugin-rest-cache": "^4.2.7"
   },
   "author": {
     "name": "A Strapi developer"

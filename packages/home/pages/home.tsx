@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 const Home = ({ restaurants, error }: any) => {
   if (error) {
@@ -16,11 +16,13 @@ const Home = ({ restaurants, error }: any) => {
 
 Home.getInitialProps = async () => {
   try {
-    const res = await axios.get("http://127.0.0.1:1337/api/restaurants");
+    const res = await axios.get(
+      'http://127.0.0.1:1337/api/restaurants?populate[0]=categories'
+    );
     const restaurants = res.data;
     return { restaurants };
   } catch (error) {
-    return { error };
+    return { restaurants: { data: [] }, error };
   }
 };
 

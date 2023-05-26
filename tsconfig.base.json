@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@home/*": ["./packages/home/*"]
+      "@home/*": ["./packages/home/*"],
+      "@home-admin/*": ["./packages/home-admin/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

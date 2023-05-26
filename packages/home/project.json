@@ -65,6 +65,5 @@
       }
     }
   },
-  "tags": [],
-  "implicitDependencies": ["home-admin"]
+  "tags": []
 }
