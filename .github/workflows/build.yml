@@ -12,13 +12,23 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
       - name: Install dependencies
-        run: npm install
-      - name: Test and coverage
-        run: npm run jest --coverage
+        run: yarn
+
+      - name: Build
+        run: yarn build -- --configuration=production
+
+      - name: Test
+        run: yarn nx affected -- --target=test --watch=false --base=remotes/origin/${{ github.event.pull_request.base.ref }} --head=HEAD
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

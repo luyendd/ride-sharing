@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev:admin": "npx nx run-many --parallel --target=serve --projects=home-admin,home"
+    "dev:admin": "npm run nx run-many --parallel --target=serve --projects=home-admin,home",
+    "nx": "npx nx"
   },
   "private": true,
   "devDependencies": {
