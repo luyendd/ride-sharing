@@ -9,6 +9,7 @@
         "@nx/enforce-module-boundaries": [
           "error",
           {
+            "allowCircularSelfDependency": true, // This allow absolute import in same project
             "enforceBuildableLibDependency": true,
             "allow": [],
             "depConstraints": [
